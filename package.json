@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Easy to use admin framework built using React and Bootstrap",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently --kill-others-on-fail \"yarn watch\" \"yarn demo\"",
+    "demo": "yarn workspace demo start",
+    "build": "yarn workspace @kdcsoftware/admin build",
+    "watch": "watch \"yarn build\" ./packages/admin/src"
   },
   "keywords": [
     "admin",
@@ -24,5 +27,9 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "watch": "^1.0.2"
+  }
 }
