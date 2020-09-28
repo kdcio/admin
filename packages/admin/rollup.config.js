@@ -14,6 +14,7 @@ export default {
       strict: false,
     },
   ],
-  plugins: [sass({ insert: true }), typescript()],
+  plugins: [sass({ output: false }), typescript()],
   external: ['react', 'react-dom'],
+  inlineDynamicImports: true,
 };

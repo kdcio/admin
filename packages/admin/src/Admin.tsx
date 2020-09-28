@@ -1,10 +1,12 @@
 import * as React from 'react';
+import AdminContext from './context/AdminContext';
+import { Layout } from './containers';
 
 const Admin: React.FC = () => {
   return (
-    <div className="package">
-      <h2>Do cool stuff yeah</h2>
-    </div>
+    <AdminContext>
+      <Layout />
+    </AdminContext>
   );
 };
 

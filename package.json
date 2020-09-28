@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Easy to use admin framework built using React and Bootstrap",
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"yarn watch\" \"yarn demo\"",
+    "start": "concurrently --kill-others-on-fail \"npm:watch:*\"  \"yarn demo\"",
     "demo": "yarn workspace demo start",
     "build": "yarn workspace @kdcsoftware/admin build",
-    "watch": "watch \"yarn build\" ./packages/admin/src"
+    "watch:admin": "yarn workspace @kdcsoftware/admin start"
   },
   "keywords": [
     "admin",
