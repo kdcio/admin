@@ -1,12 +1,8 @@
-import * as React from 'react';
-import { ReactNode, FunctionComponent, createContext } from 'react';
+import React from 'react';
+import { createContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-export interface AdminContextProps {
-  children?: ReactNode;
-}
-
-const AdminContext: FunctionComponent<AdminContextProps> = ({ children }) => {
+const AdminContext = ({ children }) => {
   const AuthContext = createContext(true);
 
   return (

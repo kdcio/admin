@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   CCreateElement,
   CSidebar,
@@ -28,11 +28,11 @@ const navigation = [
     _tag: 'CSidebarNavItem',
     name: 'Users',
     to: '/users',
-    icon: 'cil-drop',
+    icon: 'cil-user',
   },
 ];
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
   const show = true;
   return (
     <CSidebar
@@ -40,7 +40,12 @@ const Sidebar: React.FC = () => {
       // onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        KDC Admin
+        <CIcon className="c-sidebar-brand-full" name="logo" height={26} />
+        <CIcon
+          className="c-sidebar-brand-minimized"
+          name="sygnet"
+          height={26}
+        />
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement

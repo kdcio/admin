@@ -10,9 +10,9 @@ import {
   CPagination,
 } from '@coreui/react';
 
-import usersData, { UsersDataProps } from './UsersData';
+import usersData from './UsersData';
 
-const getBadge = (status: String) => {
+const getBadge = (status) => {
   switch (status) {
     case 'Active':
       return 'success';
@@ -33,7 +33,7 @@ const Users = () => {
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
   const [page, setPage] = useState(currentPage);
 
-  const pageChange = (newPage: Number) => {
+  const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/users?page=${newPage}`);
   };
 
@@ -59,11 +59,9 @@ const Users = () => {
               itemsPerPage={5}
               activePage={page}
               clickableRows
-              onRowClick={(item: UsersDataProps) =>
-                history.push(`/users/${item.id}`)
-              }
+              onRowClick={(item) => history.push(`/users/${item.id}`)}
               scopedSlots={{
-                status: (item: UsersDataProps) => (
+                status: (item) => (
                   <td>
                     <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
                   </td>

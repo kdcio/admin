@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { CContainer, CFade } from '@coreui/react';
 
-import routes, { RouteProps } from '../routes';
+import routes from '../routes';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -10,13 +10,13 @@ const loading = (
   </div>
 );
 
-const Content: React.FC = () => {
+const Content = () => {
   return (
     <main className="c-main">
       <CContainer fluid>
         <Suspense fallback={loading}>
           <Switch>
-            {routes.map((route: RouteProps, idx) => {
+            {routes.map((route, idx) => {
               return (
                 route.component && (
                   <Route

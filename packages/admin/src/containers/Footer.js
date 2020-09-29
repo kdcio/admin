@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { CFooter } from '@coreui/react';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <CFooter fixed={false}>
       <div>

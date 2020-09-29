@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import { CHeader, CToggler, CHeaderBrand } from '@coreui/react';
 // import CIcon from '@coreui/icons-react';
 
-const Header: React.FC = () => {
+const Header = () => {
   const toggleSidebar = () => {
     // const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
     // dispatch({type: 'set', sidebarShow: val})

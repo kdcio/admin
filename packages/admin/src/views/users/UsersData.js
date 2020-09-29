@@ -1,12 +1,4 @@
-export interface UsersDataProps {
-  id: Number;
-  name: String;
-  registered: String;
-  role: String;
-  status: String;
-}
-
-const usersData: UsersDataProps[] = [
+const usersData = [
   {
     id: 0,
     name: 'John Doe',
