@@ -25,9 +25,7 @@ const Header: React.FC = () => {
         className="ml-3 d-md-down-none"
         onClick={toggleSidebar}
       />
-      <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        Dashboard
-      </CHeaderBrand>
+      <CHeaderBrand className="mx-auto">Dashboard</CHeaderBrand>
     </CHeader>
   );
 };
