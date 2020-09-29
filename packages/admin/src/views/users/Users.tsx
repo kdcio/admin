@@ -4,7 +4,6 @@ import {
   CBadge,
   CCard,
   CCardBody,
-  CCardHeader,
   CCol,
   CDataTable,
   CRow,
@@ -44,12 +43,8 @@ const Users = () => {
 
   return (
     <CRow>
-      <CCol xl={6}>
+      <CCol>
         <CCard>
-          <CCardHeader>
-            Users
-            <small className="text-muted"> example</small>
-          </CCardHeader>
           <CCardBody>
             <CDataTable
               items={usersData}
