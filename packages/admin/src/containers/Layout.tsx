@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Header, Sidebar, Footer, Content } from './index';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
+import Content from './Content';
 
 const Layout: React.FC = () => {
   return (
