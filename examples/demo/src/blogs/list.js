@@ -1,9 +1,9 @@
 import React from "react";
-import { CLink } from "@kdcsoftware/admin";
+import { CLink, List } from "@kdcsoftware/admin";
 
 const BlogList = () => {
   return (
-    <div>
+    <List>
       <h1>BlogList</h1>
       <CLink className="text-white bg-info px-2" to="/blogs/create">
         Create
@@ -14,7 +14,7 @@ const BlogList = () => {
       <CLink className="text-white bg-info px-2" to="/blogs/123/show">
         Show
       </CLink>
-    </div>
+    </List>
   );
 };
 

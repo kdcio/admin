@@ -1,5 +1,5 @@
 {
-  "name": "@kdcsoftware/admin",
+  "name": "ka-ui",
   "version": "1.0.0",
   "description": "Frontend framework for building admin inteface",
   "main": "dist/index.cjs.js",
@@ -34,7 +34,6 @@
     "@coreui/react": "^3.3.0",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
-    "ka-ui": "*",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

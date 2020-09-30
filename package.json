@@ -6,7 +6,8 @@
     "start": "concurrently --kill-others-on-fail \"npm:watch:*\"  \"yarn demo\"",
     "demo": "yarn workspace demo start",
     "build": "yarn workspace @kdcsoftware/admin build",
-    "watch:admin": "yarn workspace @kdcsoftware/admin start"
+    "watch:admin": "yarn workspace @kdcsoftware/admin start",
+    "watch:ui": "yarn workspace ka-ui start"
   },
   "keywords": [
     "admin",

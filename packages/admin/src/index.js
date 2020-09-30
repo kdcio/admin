@@ -6,4 +6,5 @@ import { icons } from './assets/icons/index';
 React.icons = icons;
 
 export * from '@coreui/react';
+export * from 'ka-ui';
 export { Admin, Resource };
