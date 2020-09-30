@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { CContainer, CFade } from '@coreui/react';
 
-import routes from '../routes';
+// import routes from '../routes';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -10,31 +10,100 @@ const loading = (
   </div>
 );
 
-const Content = () => {
+const createRoute = ({ name, idx, path, exact, component: Component }) => (
+  <Route
+    key={`${name}-${idx}`}
+    path={path}
+    exact={exact}
+    name={name}
+    render={(props) => (
+      <CFade>
+        <Component {...props} />
+      </CFade>
+    )}
+  />
+);
+
+const createResourceRoutes = ({ props }) => {
+  const { name, list, edit, create, show } = props;
+  const routes = [];
+  if (list) {
+    routes.push(
+      createRoute({
+        name,
+        idx: 'list',
+        path: `/${name}`,
+        exact: true,
+        component: list,
+      })
+    );
+  }
+  if (create) {
+    routes.push(
+      createRoute({
+        name,
+        idx: 'create',
+        path: `/${name}/create`,
+        exact: true,
+        component: create,
+      })
+    );
+  }
+  if (edit) {
+    routes.push(
+      createRoute({
+        name,
+        idx: 'edit',
+        path: `/${name}/:id`,
+        exact: true,
+        component: edit,
+      })
+    );
+  }
+  if (show) {
+    routes.push(
+      createRoute({
+        name,
+        idx: 'show',
+        path: `/${name}/:id/show`,
+        exact: true,
+        component: show,
+      })
+    );
+  }
+  return routes;
+};
+
+const Content = ({ dashboard, children }) => {
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    let ro = [];
+    children.forEach((res) => {
+      ro = ro.concat(createResourceRoutes(res));
+    });
+    if (dashboard) {
+      ro = ro.concat(
+        createRoute({
+          name: 'dashboard',
+          idx: 'dashboard',
+          path: `/dashboard`,
+          exact: true,
+          component: dashboard,
+        })
+      );
+      ro = ro.concat(
+        <Redirect key="dashboard-redirect" from="/" to="/dashboard" />
+      );
+    }
+    setRoutes(ro);
+  }, [children]);
+
   return (
     <main className="c-main">
       <CContainer fluid>
         <Suspense fallback={loading}>
-          <Switch>
-            {routes.map((route, idx) => {
-              return (
-                route.component && (
-                  <Route
-                    key={idx}
-                    path={route.path}
-                    exact={route.exact}
-                    // name={route.name}
-                    render={(props) => (
-                      <CFade>
-                        <route.component {...props} />
-                      </CFade>
-                    )}
-                  />
-                )
-              );
-            })}
-            <Redirect from="/" to="/dashboard" />
-          </Switch>
+          <Switch>{routes}</Switch>
         </Suspense>
       </CContainer>
     </main>

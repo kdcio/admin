@@ -28,9 +28,7 @@ const defaultNav = [
 
 const Sidebar = ({ children }) => {
   const [navigation, setNavigation] = useState([...defaultNav]);
-
   const show = true;
-  console.log(children);
   useEffect(() => {
     const nav = [...defaultNav];
     let lastGroup = 'Resources';
