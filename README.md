@@ -19,3 +19,12 @@ yarn add @kdcsoftware/admin
 ## Usage
 
 See demo for simple example.
+
+## Development
+
+Clone this repo the do the commands below:
+
+```bash
+yarn
+yarn start
+```
