@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CCreateElement,
   CSidebar,
@@ -13,7 +13,7 @@ import {
 
 import CIcon from '@coreui/icons-react';
 
-const navigation = [
+const defaultNav = [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
@@ -24,16 +24,37 @@ const navigation = [
     _tag: 'CSidebarNavTitle',
     _children: ['Resources'],
   },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Users',
-    to: '/users',
-    icon: 'cil-user',
-  },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ children }) => {
+  const [navigation, setNavigation] = useState([...defaultNav]);
+
   const show = true;
+  console.log(children);
+  useEffect(() => {
+    const nav = [...defaultNav];
+    let lastGroup = 'Resources';
+    children.forEach((child) => {
+      const { props } = child;
+      if (props.group && lastGroup !== props.group) {
+        // new group
+        nav.push({
+          _tag: 'CSidebarNavTitle',
+          _children: [props.group],
+        });
+        lastGroup = props.group;
+      }
+
+      nav.push({
+        _tag: 'CSidebarNavItem',
+        name: props.options.label,
+        to: `/${props.name}`,
+        icon: props.icon,
+      });
+    });
+    setNavigation(nav);
+  }, [children]);
+
   return (
     <CSidebar
       show={show}

@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Admin } from "@kdcsoftware/admin";
+import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./scss/style.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Admin />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

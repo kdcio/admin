@@ -4,14 +4,14 @@ import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Content from './Content';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <div className="c-app c-default-layout">
-      <Sidebar />
+      <Sidebar children={children} />
       <div className="c-wrapper">
         <Header />
         <div className="c-body">
-          <Content />
+          <Content children={children} />
         </div>
         <Footer />
       </div>

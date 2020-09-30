@@ -1,6 +1,6 @@
 import { sygnet } from './sygnet';
 import { logo } from './logo';
-import { cilSpeedometer, cilUser } from '@coreui/icons';
+import * as AllIcons from '@coreui/icons';
 
 export const icons = Object.assign(
   {},
@@ -9,8 +9,5 @@ export const icons = Object.assign(
     logo,
     // logoNegative,
   },
-  {
-    cilSpeedometer,
-    cilUser,
-  }
+  { ...AllIcons }
 );

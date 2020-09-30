@@ -2,9 +2,9 @@ import React from 'react';
 import AdminContext from './context/AdminContext';
 import { Layout } from './containers';
 
-const Admin = () => (
+const Admin = ({ children }) => (
   <AdminContext>
-    <Layout />
+    <Layout children={children} />
   </AdminContext>
 );
 
