@@ -1,7 +1,8 @@
-import BlogCreate from "./create";
-import BlogEdit from "./edit";
-import BlogIcon from "./icon";
-import BlogList from "./list";
-import BlogShow from "./show";
+import React from "react";
 
-export { BlogCreate, BlogEdit, BlogIcon, BlogList, BlogShow };
+const BlogCreate = React.lazy(() => import("./create"));
+const BlogEdit = React.lazy(() => import("./edit"));
+const BlogList = React.lazy(() => import("./list"));
+const BlogShow = React.lazy(() => import("./show"));
+
+export { BlogCreate, BlogEdit, BlogList, BlogShow };

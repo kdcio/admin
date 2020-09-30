@@ -1,12 +1,13 @@
 import React from "react";
 import { Admin, Resource } from "@kdcsoftware/admin";
 
+import { Dashboard } from "./dashboard";
 import { BlogCreate, BlogEdit, BlogList, BlogShow } from "./blogs";
 import { UserCreate, UserEdit, UserList, UserShow } from "./users";
 
 const App = () => {
   return (
-    <Admin>
+    <Admin dashboard={Dashboard}>
       <Resource
         name="blogs"
         group="Resources"
