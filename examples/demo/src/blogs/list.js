@@ -1,10 +1,10 @@
 import React from "react";
-import { CLink, List } from "@kdcsoftware/admin";
+import { List } from "@kdcsoftware/admin";
 
 const BlogList = () => {
   return (
     <List>
-      <h1>BlogList</h1>
+      {/* <h1>BlogList</h1>
       <CLink className="text-white bg-info px-2" to="/blogs/create">
         Create
       </CLink>
@@ -13,7 +13,7 @@ const BlogList = () => {
       </CLink>
       <CLink className="text-white bg-info px-2" to="/blogs/123/show">
         Show
-      </CLink>
+      </CLink> */}
     </List>
   );
 };
