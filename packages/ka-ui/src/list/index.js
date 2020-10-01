@@ -1,3 +1,4 @@
 import List from './List';
+import Datagrid from './Datagrid';
 
-export { List };
+export { List, Datagrid };
