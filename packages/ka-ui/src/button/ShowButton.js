@@ -1,7 +1,12 @@
 import React from 'react';
+import { CButton } from '@coreui/react';
 
-const ShowButton = () => {
-  return <div>ShowButton</div>;
+const ShowButton = (props) => {
+  return (
+    <CButton variant="outline" color="primary" {...props}>
+      Show
+    </CButton>
+  );
 };
 
 export default ShowButton;

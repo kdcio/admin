@@ -1,12 +1,12 @@
 import React from 'react';
-// import { useListContext } from 'ka-core';
-import { CDataTable, CPagination } from '@coreui/react';
+import { useListContext } from 'ka-core';
+import DatagridRow from './DatagridRow';
 
 const Datagrid = (props) => {
-  // const listProps = useListContext();
+  const { data = [] } = useListContext();
   const { children = [] } = props;
-  const page = 1;
-  const pageChange = () => {};
+  // const page = 1;
+  // const pageChange = () => {};
 
   return (
     <table className="table">
@@ -30,23 +30,13 @@ const Datagrid = (props) => {
           })}
         </tr>
       </thead>
-      {/* <CDataTable
-        items={[]}
-        fields={fields}
-        hover
-        striped
-        itemsPerPage={5}
-        activePage={page}
-        clickableRows
-        onRowClick={(item) => history.push(`/users/${item.id}`)}
-        scopedSlots={{
-          status: (item) => (
-            <td>
-              <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-            </td>
-          ),
-        }}
-      /> */}
+      <tbody>
+        {data.map((row, idx) => (
+          <DatagridRow key={idx} record={row} rowIndex={idx}>
+            {children}
+          </DatagridRow>
+        ))}
+      </tbody>
       {/* <CPagination
         activePage={page}
         onActivePageChange={pageChange}

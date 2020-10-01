@@ -1,7 +1,7 @@
 import React from 'react';
 
-const TextField = () => {
-  return <div>TextField</div>;
+const TextField = ({ record, source }) => {
+  return record[source];
 };
 
 export default TextField;

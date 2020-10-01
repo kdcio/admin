@@ -12,8 +12,8 @@ const UserList = () => {
     <List>
       <Datagrid>
         <TextField label="ID" source="id" />
-        <TextField label="First Name" source="firstName" />
-        <TextField label="Last Name" source="lastName" />
+        <TextField label="Name" source="name" />
+        <TextField label="Role" source="role" />
         <TextField label="Status" source="status" />
         <ShowButton />
         <EditButton />
