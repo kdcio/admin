@@ -19,7 +19,7 @@ const createRoute = ({ name, idx, path, exact, component: Component }) => (
     name={name}
     render={(props) => (
       <CFade>
-        <RouteContextProvider name={name}>
+        <RouteContextProvider name={name} {...props}>
           <Component {...props} name={name} />
         </RouteContextProvider>
       </CFade>

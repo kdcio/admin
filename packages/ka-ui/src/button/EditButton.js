@@ -1,9 +1,12 @@
 import React from 'react';
 import { CButton } from '@coreui/react';
+import { useRouteContext } from 'ka-core';
 
-const EditButton = (props) => {
+const EditButton = ({ contextProps, record, ...rest }) => {
+  const { history, basePath } = useRouteContext();
+  const onClick = () => history.push(`${basePath}/${record.id}`);
   return (
-    <CButton variant="outline" color="primary" {...props}>
+    <CButton variant="outline" color="primary" onClick={onClick} {...rest}>
       Edit
     </CButton>
   );

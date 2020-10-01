@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import { useListContext } from 'ka-core';
 import DatagridRow from './DatagridRow';
 
@@ -31,11 +31,17 @@ const Datagrid = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((row, idx) => (
-          <DatagridRow key={idx} record={row} rowIndex={idx}>
-            {children}
-          </DatagridRow>
-        ))}
+        {data.map((row, idx) =>
+          cloneElement(
+            <DatagridRow />,
+            {
+              key: idx,
+              record: row,
+              rowIndex: idx,
+            },
+            children
+          )
+        )}
       </tbody>
       {/* <CPagination
         activePage={page}
