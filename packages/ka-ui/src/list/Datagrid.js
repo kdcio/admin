@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import { useListContext } from 'ka-core';
 import { CDataTable, CPagination } from '@coreui/react';
 
 const Datagrid = (props) => {
   // const listProps = useListContext();
-  const [fields, setFields] = useState([]);
+  const { children = [] } = props;
   const page = 1;
   const pageChange = () => {};
 
-  useEffect(() => {
-    const { children = [] } = props;
-    const fs = [];
-    children.forEach((child, idx) => {
-      const {
-        props: { source, label },
-      } = child;
-      if (!source && !label) {
-        fs.push({ key: idx, label: '' });
-      } else {
-        fs.push({ key: source, label: label });
-      }
-
-      setFields(fs);
-    });
-  }, [props]);
-
   return (
-    <>
-      <CDataTable
+    <table className="table">
+      <thead>
+        <tr>
+          {children.map((child, idx) => {
+            let {
+              props: { source, label },
+            } = child;
+            if (!source && !label) {
+              label = '';
+            } else if (!label) {
+              label = source;
+            }
+
+            return (
+              <th key={idx} scope="col">
+                {label}
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+      {/* <CDataTable
         items={[]}
         fields={fields}
         hover
@@ -43,15 +46,15 @@ const Datagrid = (props) => {
             </td>
           ),
         }}
-      />
-      <CPagination
+      /> */}
+      {/* <CPagination
         activePage={page}
         onActivePageChange={pageChange}
         pages={5}
         doubleArrows={false}
         align="center"
-      />
-    </>
+      /> */}
+    </table>
   );
 };
 
