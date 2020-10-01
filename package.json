@@ -7,6 +7,7 @@
     "demo": "yarn workspace demo start",
     "build": "yarn workspace @kdcsoftware/admin build",
     "watch:admin": "yarn workspace @kdcsoftware/admin start",
+    "watch:core": "yarn workspace ka-core start",
     "watch:ui": "yarn workspace ka-ui start"
   },
   "keywords": [

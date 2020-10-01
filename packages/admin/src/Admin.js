@@ -1,6 +1,5 @@
 import React from 'react';
-import AdminContext from './context/AdminContext';
-import { Layout } from './containers';
+import { AdminContext, Layout } from 'ka-core';
 
 const Admin = ({ dashboard, children }) => (
   <AdminContext>

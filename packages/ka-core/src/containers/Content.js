@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { CContainer, CFade } from '@coreui/react';
+import { RouteContextProvider } from '../context';
 
 // import routes from '../routes';
 
@@ -18,7 +19,9 @@ const createRoute = ({ name, idx, path, exact, component: Component }) => (
     name={name}
     render={(props) => (
       <CFade>
-        <Component {...props} />
+        <RouteContextProvider name={name}>
+          <Component {...props} name={name} />
+        </RouteContextProvider>
       </CFade>
     )}
   />
