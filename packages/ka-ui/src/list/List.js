@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListContextProvider } from 'ka-core';
-import { CCard, CCardBody, CCol, CRow } from '@coreui/react';
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
+import { CreateButton } from '../button';
 
 import { list } from '../data';
 
@@ -12,6 +13,11 @@ const List = (props) => {
       <CRow>
         <CCol>
           <CCard>
+            <CCardHeader>
+              <div className="card-header-actions">
+                <CreateButton />
+              </div>
+            </CCardHeader>
             <CCardBody>{children}</CCardBody>
           </CCard>
         </CCol>

@@ -1,9 +1,9 @@
 import React, { cloneElement } from 'react';
-import { useEditContext } from 'ka-core';
+import { useFormContext } from 'ka-core';
 import { SaveButton, CancelButton } from '../button';
 
 const SimpleForm = (props) => {
-  const { record = {} } = useEditContext();
+  const { record = {} } = useFormContext();
   const { children = [] } = props;
 
   return (

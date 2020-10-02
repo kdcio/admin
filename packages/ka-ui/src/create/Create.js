@@ -4,9 +4,10 @@ import { CCard, CCardHeader, CCardBody, CCol, CRow } from '@coreui/react';
 
 import { get } from '../data';
 
-const Edit = (props) => {
-  const { children, ...editProps } = props;
+const Create = (props) => {
+  const { children, ...createProps } = props;
   const {
+    label,
     match: { params },
   } = useRouteContext();
   const [data, setData] = useState(null);
@@ -16,11 +17,11 @@ const Edit = (props) => {
   }, [params]);
 
   return (
-    <FormContextProvider {...editProps} type="edit" record={data}>
+    <FormContextProvider {...createProps} type="create" record={data}>
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>Edit #{params.id}</CCardHeader>
+            <CCardHeader>Create new {label}</CCardHeader>
             <CCardBody>{children}</CCardBody>
           </CCard>
         </CCol>
@@ -29,4 +30,4 @@ const Edit = (props) => {
   );
 };
 
-export default Edit;
+export default Create;

@@ -1,12 +1,12 @@
 import { ListContextProvider, useListContext } from './ListContext';
 import { ShowContextProvider, useShowContext } from './ShowContext';
-import { EditContextProvider, useEditContext } from './EditContext';
+import { FormContextProvider, useFormContext } from './FormContext';
 
 export {
   ListContextProvider,
   useListContext,
   ShowContextProvider,
   useShowContext,
-  EditContextProvider,
-  useEditContext,
+  FormContextProvider,
+  useFormContext,
 };
