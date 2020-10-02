@@ -1,15 +1,14 @@
 import React from 'react';
-import { ListContextProvider, useRouteContext } from 'ka-core';
+import { ListContextProvider } from 'ka-core';
 import { CCard, CCardBody, CCol, CRow } from '@coreui/react';
 
-import userData from './UsersData';
+import { list } from '../data';
 
 const List = (props) => {
   const { children, ...listProps } = props;
-  const routeProps = useRouteContext();
 
   return (
-    <ListContextProvider routeProps={routeProps} {...listProps} data={userData}>
+    <ListContextProvider {...listProps} data={list}>
       <CRow>
         <CCol>
           <CCard>
