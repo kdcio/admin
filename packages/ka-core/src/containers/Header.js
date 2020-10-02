@@ -7,10 +7,11 @@ import { useAdminContext } from '../context';
 
 const Header = () => {
   const location = useLocation();
-  const { params } = matchPath(location.pathname, {
-    path: '/:resource',
-    exact: false,
-  });
+  const { params = '' } =
+    matchPath(location.pathname, {
+      path: '/:resource',
+      exact: false,
+    }) || {};
   const { getResourceOpts } = useAdminContext();
   const options = getResourceOpts(params.resource);
   const { label = '' } = options || {};
