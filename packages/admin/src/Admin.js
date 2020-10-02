@@ -1,10 +1,12 @@
 import React from 'react';
-import { AdminContext, Layout } from 'ka-core';
+import { AdminContextProvider, Layout } from 'ka-core';
 
 const Admin = ({ dashboard, children }) => (
-  <AdminContext>
-    <Layout dashboard={dashboard} children={children} />
-  </AdminContext>
+  <AdminContextProvider>
+    <Layout dashboard={dashboard}>{children}</Layout>
+  </AdminContextProvider>
 );
+
+Admin.displayName = 'Admin';
 
 export default Admin;

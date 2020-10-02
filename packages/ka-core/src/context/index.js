@@ -1,11 +1,12 @@
-import AdminContext from './AdminContext';
+import { AdminContextProvider, useAdminContext } from './AdminContext';
 import { RouteContextProvider, useRouteContext } from './RouteContext';
 import { ListContextProvider, useListContext } from './ListContext';
 import { ShowContextProvider, useShowContext } from './ShowContext';
 import { FormContextProvider, useFormContext } from './FormContext';
 
 export {
-  AdminContext,
+  AdminContextProvider,
+  useAdminContext,
   RouteContextProvider,
   useRouteContext,
   ListContextProvider,

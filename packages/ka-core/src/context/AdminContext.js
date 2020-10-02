@@ -1,15 +1,25 @@
-import React from 'react';
-import { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-const AdminContext = ({ children }) => {
-  const AuthContext = createContext(true);
+const AdminContext = createContext({});
+
+const useAdminContext = () => useContext(AdminContext);
+
+const AdminContextProvider = ({ children, ...rest }) => {
+  const options = { ...rest, resources: {} };
+  const { props } = children; // Layout component
+  props.children.forEach((child) => {
+    const { props } = child;
+    options.resources[props.name] = props.options || {};
+  });
+
+  const getResourceOpts = (name) => options.resources[name];
 
   return (
-    <AuthContext.Provider value={true}>
+    <AdminContext.Provider value={{ getResourceOpts, ...options }}>
       <BrowserRouter>{children}</BrowserRouter>
-    </AuthContext.Provider>
+    </AdminContext.Provider>
   );
 };
 
-export default AdminContext;
+export { AdminContextProvider, useAdminContext };
