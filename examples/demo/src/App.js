@@ -1,9 +1,9 @@
 import React from "react";
 import { Admin, Resource } from "@kdcsoftware/admin";
 
-import { Dashboard } from "./dashboard";
-import { BlogCreate, BlogEdit, BlogList, BlogShow } from "./blogs";
-import { UserCreate, UserEdit, UserList, UserShow } from "./users";
+import { Dashboard } from "./views/dashboard";
+import { BlogCreate, BlogEdit, BlogList, BlogShow } from "./views/blogs";
+import { UserCreate, UserEdit, UserList, UserShow } from "./views/users";
 
 const App = () => {
   return (
