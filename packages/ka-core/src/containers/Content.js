@@ -11,7 +11,14 @@ const loading = (
   </div>
 );
 
-const createRoute = ({ name, idx, path, exact, component: Component }) => (
+const createRoute = ({
+  name,
+  options,
+  idx,
+  path,
+  exact,
+  component: Component,
+}) => (
   <Route
     key={`${name}-${idx}`}
     path={path}
@@ -19,7 +26,7 @@ const createRoute = ({ name, idx, path, exact, component: Component }) => (
     name={name}
     render={(props) => (
       <CFade>
-        <RouteContextProvider name={name} {...props}>
+        <RouteContextProvider name={name} options={options} {...props}>
           <Component {...props} name={name} />
         </RouteContextProvider>
       </CFade>
@@ -28,12 +35,13 @@ const createRoute = ({ name, idx, path, exact, component: Component }) => (
 );
 
 const createResourceRoutes = ({ props }) => {
-  const { name, list, edit, create, show } = props;
+  const { name, options, list, edit, create, show } = props;
   const routes = [];
   if (list) {
     routes.push(
       createRoute({
         name,
+        options,
         idx: 'list',
         path: `/${name}`,
         exact: true,
@@ -45,6 +53,7 @@ const createResourceRoutes = ({ props }) => {
     routes.push(
       createRoute({
         name,
+        options,
         idx: 'create',
         path: `/${name}/create`,
         exact: true,
@@ -56,6 +65,7 @@ const createResourceRoutes = ({ props }) => {
     routes.push(
       createRoute({
         name,
+        options,
         idx: 'edit',
         path: `/${name}/:id`,
         exact: true,
@@ -67,6 +77,7 @@ const createResourceRoutes = ({ props }) => {
     routes.push(
       createRoute({
         name,
+        options,
         idx: 'show',
         path: `/${name}/:id/show`,
         exact: true,

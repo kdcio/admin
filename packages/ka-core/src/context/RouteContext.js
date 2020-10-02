@@ -6,10 +6,10 @@ const RouteContext = createContext({});
 const useRouteContext = () => useContext(RouteContext);
 
 const RouteContextProvider = (props) => {
-  const { children, name, ...other } = props;
+  const { children, name, options, ...other } = props;
   const basePath = `/${name}`;
   return (
-    <RouteContext.Provider value={{ ...other, name, basePath }}>
+    <RouteContext.Provider value={{ ...other, ...options, name, basePath }}>
       {children}
     </RouteContext.Provider>
   );
