@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FormContextProvider, useRouteContext } from 'ka-core';
 import { CCard, CCardHeader, CCardBody, CCol, CRow } from '@coreui/react';
-
-import { get } from '../data';
 
 const Edit = (props) => {
   const { children, ...editProps } = props;
   const {
     match: { params },
   } = useRouteContext();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    setData(get(params.id));
-  }, [params]);
 
   return (
-    <FormContextProvider {...editProps} type="edit" record={data}>
+    <FormContextProvider {...editProps} type="edit">
       <CRow>
         <CCol>
           <CCard>

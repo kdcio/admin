@@ -1,10 +1,10 @@
 import { useEffect, useRef, useReducer } from 'react';
 
-const useProvider = ({ source, name }) => {
+const useProvider = ({ source, name, params, defaultData = [] }) => {
   const initialState = {
     status: 'idle',
     error: null,
-    data: [],
+    data: defaultData,
   };
 
   const [state, dispatch] = useReducer((state, action) => {
@@ -27,7 +27,7 @@ const useProvider = ({ source, name }) => {
     const fetchData = async () => {
       dispatch({ type: 'FETCHING' });
       try {
-        const data = await source(name);
+        const data = await source(name, params);
         if (cancelRequest) return;
         dispatch({ type: 'FETCHED', payload: data });
       } catch (error) {

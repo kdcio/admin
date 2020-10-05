@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import get from 'lodash.get';
 
-const TextInput = ({ record, source, label, help, ...rest }) => {
+const TextInput = ({
+  record,
+  source,
+  label,
+  help,
+  defaultValue = '',
+  ...rest
+}) => {
   const [value, setValue] = useState('');
   useEffect(() => {
-    if (record && record[source] !== undefined) {
-      setValue(record[source]);
-    }
-  }, [record]);
+    setValue(get(record, source, defaultValue));
+  }, [record, source, defaultValue]);
 
   const onChange = (e) => setValue(e.target.value);
   return (

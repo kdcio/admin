@@ -5,10 +5,17 @@ const UserShow = () => {
   return (
     <Show>
       <SimpleShowLayout>
-        <TextField label="ID" source="id" />
         <TextField label="Name" source="name" />
-        <TextField label="Role" source="role" />
-        <TextField label="Status" source="status" />
+        <TextField label="Username" source="username" />
+        <TextField label="Address 1" source="address.street" />
+        <TextField label="Address 2" source="address.suite" />
+        <TextField label="City" source="address.city" />
+        <TextField label="Zip Code" source="address.zipcode" />
+        <TextField label="Latitude" source="address.geo.lat" />
+        <TextField label="Longitude" source="address.geo.lng" />
+        <TextField label="Email" source="email" />
+        <TextField label="Phone" source="phone" />
+        <TextField label="Website" source="website" />
       </SimpleShowLayout>
     </Show>
   );
