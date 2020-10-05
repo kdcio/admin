@@ -1,8 +1,11 @@
 import React from 'react';
 import { AdminContextProvider, Layout } from 'ka-core';
 
-const Admin = ({ dashboard, children }) => (
-  <AdminContextProvider containsDashboard={!!dashboard}>
+const Admin = ({ dataProvider, dashboard, children }) => (
+  <AdminContextProvider
+    containsDashboard={!!dashboard}
+    dataProvider={dataProvider}
+  >
     <Layout dashboard={dashboard}>{children}</Layout>
   </AdminContextProvider>
 );

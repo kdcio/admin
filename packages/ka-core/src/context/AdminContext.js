@@ -1,11 +1,17 @@
 import React, { createContext, useContext } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { DataProviderContextProvider } from '../dataProvider';
 
 const AdminContext = createContext({});
 
 const useAdminContext = () => useContext(AdminContext);
 
-const AdminContextProvider = ({ containsDashboard, children, ...rest }) => {
+const AdminContextProvider = ({
+  containsDashboard,
+  dataProvider,
+  children,
+  ...rest
+}) => {
   const options = { ...rest, resources: {} };
   const { props } = children; // Layout component
   props.children.forEach((child) => {
@@ -20,7 +26,9 @@ const AdminContextProvider = ({ containsDashboard, children, ...rest }) => {
 
   return (
     <AdminContext.Provider value={{ getResourceOpts, ...options }}>
-      <BrowserRouter>{children}</BrowserRouter>
+      <DataProviderContextProvider {...dataProvider}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </DataProviderContextProvider>
     </AdminContext.Provider>
   );
 };

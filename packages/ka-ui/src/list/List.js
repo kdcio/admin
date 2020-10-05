@@ -3,13 +3,11 @@ import { ListContextProvider } from 'ka-core';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { CreateButton } from '../button';
 
-import { list } from '../data';
-
 const List = (props) => {
   const { children, ...listProps } = props;
 
   return (
-    <ListContextProvider {...listProps} data={list}>
+    <ListContextProvider {...listProps}>
       <CRow>
         <CCol>
           <CCard>
