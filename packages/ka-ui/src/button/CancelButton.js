@@ -2,7 +2,7 @@ import React from 'react';
 import { CButton } from '@coreui/react';
 import { useRouteContext } from 'ka-core';
 
-const CanelButton = (props) => {
+const CancelButton = (props) => {
   const { history, basePath } = useRouteContext();
   const onClick = () => history.push(`${basePath}`);
   return (
@@ -12,4 +12,4 @@ const CanelButton = (props) => {
   );
 };
 
-export default CanelButton;
+export default CancelButton;
