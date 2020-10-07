@@ -1,9 +1,19 @@
 const Providers = function Providers({ api }) {
   this.api = api;
+  this.cache = {};
 };
 
-Providers.prototype.list = function list({ resource }) {
-  return this.api(`/${resource}`);
+Providers.prototype.list = async function list({ resource, params = {} }) {
+  if (!this.cache["list"]) {
+    this.cache["list"] = {};
+  }
+
+  if (!this.cache["list"][resource]) {
+    this.cache["list"][resource] = await this.api(`/${resource}`);
+  }
+
+  const { limit = 10, page = 0 } = params;
+  return this.cache["list"][resource].slice(limit * page, limit);
 };
 
 Providers.prototype.get = function get({ resource, params }) {

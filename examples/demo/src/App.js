@@ -4,20 +4,18 @@ import { Admin, Resource } from "@kdcsoftware/admin";
 import dataProvider from "./dataProvider";
 
 import { Dashboard } from "./views/dashboard";
-import { BlogCreate, BlogEdit, BlogList, BlogShow } from "./views/blogs";
+import { PostList, PostShow } from "./views/posts";
 import { UserCreate, UserEdit, UserList, UserShow } from "./views/users";
 
 const App = () => {
   return (
     <Admin dashboard={Dashboard} dataProvider={dataProvider}>
       <Resource
-        name="blogs"
+        name="posts"
         group="Resources"
-        options={{ label: "Blogs" }}
-        list={BlogList}
-        edit={BlogEdit}
-        create={BlogCreate}
-        show={BlogShow}
+        options={{ label: "Posts" }}
+        list={PostList}
+        show={PostShow}
         icon="cil-pencil"
       />
       <Resource
