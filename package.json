@@ -1,6 +1,6 @@
 {
   "name": "kdc-admin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Easy to use admin framework built using React and Bootstrap",
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"npm:watch:*\"  \"yarn demo\"",
