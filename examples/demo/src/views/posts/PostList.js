@@ -7,7 +7,7 @@ import {
   EditButton,
 } from "@kdcsoftware/admin";
 
-const UserList = () => {
+const PostList = () => {
   return (
     <List>
       <Datagrid>
@@ -21,4 +21,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default PostList;

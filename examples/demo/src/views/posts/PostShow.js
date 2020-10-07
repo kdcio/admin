@@ -1,7 +1,7 @@
 import React from "react";
 import { Show, SimpleShowLayout, TextField } from "@kdcsoftware/admin";
 
-const UserShow = () => {
+const PostShow = () => {
   return (
     <Show>
       <SimpleShowLayout>
@@ -13,4 +13,4 @@ const UserShow = () => {
   );
 };
 
-export default UserShow;
+export default PostShow;
