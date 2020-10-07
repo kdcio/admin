@@ -1,4 +1,4 @@
-import { useEffect, useRef, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 const useProvider = ({ source, name, params, defaultData = [] }) => {
   const initialState = {
@@ -7,7 +7,7 @@ const useProvider = ({ source, name, params, defaultData = [] }) => {
     data: defaultData,
   };
 
-  const [state, dispatch] = useReducer((state, action) => {
+  const [state, dispatch] = useReducer((currentState, action) => {
     switch (action.type) {
       case 'FETCHING':
         return { ...initialState, status: 'fetching' };
@@ -16,7 +16,7 @@ const useProvider = ({ source, name, params, defaultData = [] }) => {
       case 'FETCH_ERROR':
         return { ...initialState, status: 'error', error: action.payload };
       default:
-        return state;
+        return currentState;
     }
   }, initialState);
 
