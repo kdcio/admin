@@ -1,4 +1,4 @@
-import useProvider from './provider';
+import useProvider from './useProvider';
 import {
   DataProviderContextProvider,
   useDataProviderContext,
