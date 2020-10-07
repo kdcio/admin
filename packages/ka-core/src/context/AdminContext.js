@@ -15,8 +15,8 @@ const AdminContextProvider = ({
   const options = { ...rest, resources: {} };
   const { props } = children; // Layout component
   props.children.forEach((child) => {
-    const { props } = child;
-    options.resources[props.name] = props.options || {};
+    const { props: childProps } = child;
+    options.resources[childProps.name] = childProps.options || {};
   });
   if (containsDashboard) {
     options.resources['dashboard'] = { label: 'Dashboard' };
