@@ -1,7 +1,7 @@
 import React from 'react';
 import { createContext, useContext } from 'react';
 import { useDataProviderContext, useProvider } from '../dataProvider';
-import { useRouteContext } from '../context';
+import { useRouteContext } from '../context/RouteContext';
 
 const defaultValue = { data: [] };
 
