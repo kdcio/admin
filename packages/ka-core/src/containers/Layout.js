@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -7,16 +8,27 @@ import Content from './Content';
 const Layout = ({ dashboard, children }) => {
   return (
     <div className="c-app c-default-layout">
-      <Sidebar children={children} />
+      <Sidebar>{children}</Sidebar>
       <div className="c-wrapper">
         <Header />
         <div className="c-body">
-          <Content dashboard={dashboard} children={children} />
+          <Content dashboard={dashboard}>{children}</Content>
         </div>
         <Footer />
       </div>
     </div>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  dashboard: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default Layout;

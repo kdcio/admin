@@ -1,9 +1,9 @@
 import React from 'react';
 import { CHeader, CToggler, CHeaderBrand } from '@coreui/react';
 import { useLocation } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { matchPath } from 'react-router';
 import { useAdminContext } from '../context';
-// import CIcon from '@coreui/icons-react';
 
 const Header = () => {
   const location = useLocation();
@@ -17,12 +17,14 @@ const Header = () => {
   const { label = '' } = options || {};
 
   const toggleSidebar = () => {
-    // const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
+    // const val = [true, 'responsive'].includes(sidebarShow)
+    // ? false : 'responsive'
     // dispatch({type: 'set', sidebarShow: val})
   };
 
   const toggleSidebarMobile = () => {
-    // const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
+    // const val = [false, 'responsive'].includes(sidebarShow)
+    // ? true : 'responsive'
     // dispatch({type: 'set', sidebarShow: val})
   };
 

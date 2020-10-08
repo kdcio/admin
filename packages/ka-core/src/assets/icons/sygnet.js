@@ -1,4 +1,5 @@
-export const sygnet = [
+/* eslint-disable max-len */
+const sygnet = [
   '160 160',
   `
   <title>kdc admin logo</title>
@@ -14,3 +15,4 @@ export const sygnet = [
   </g>
 `,
 ];
+export default sygnet;

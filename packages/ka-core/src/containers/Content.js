@@ -1,13 +1,12 @@
 import React, { Suspense, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { CContainer, CFade } from '@coreui/react';
 import { RouteContextProvider } from '../context';
 
-// import routes from '../routes';
-
 const loading = (
   <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
+    <div className="sk-spinner sk-spinner-pulse" />
   </div>
 );
 
@@ -24,13 +23,27 @@ const createRoute = ({
     path={path}
     exact={exact}
     name={name}
-    render={(props) => (
-      <CFade>
-        <RouteContextProvider name={name} options={options} {...props}>
-          <Component {...props} name={name} />
-        </RouteContextProvider>
-      </CFade>
-    )}
+    render={(props) => {
+      const { history, location, match } = props;
+      return (
+        <CFade>
+          <RouteContextProvider
+            name={name}
+            options={options}
+            history={history}
+            location={location}
+            match={match}
+          >
+            <Component
+              history={history}
+              location={location}
+              match={match}
+              name={name}
+            />
+          </RouteContextProvider>
+        </CFade>
+      );
+    }}
   />
 );
 
@@ -122,6 +135,17 @@ const Content = ({ dashboard, children }) => {
       </CContainer>
     </main>
   );
+};
+
+Content.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  dashboard: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default React.memo(Content);

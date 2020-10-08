@@ -1,5 +1,5 @@
-import React from 'react';
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 const DataProviderContext = createContext({});
 
@@ -13,6 +13,14 @@ const DataProviderContextProvider = (props) => {
       {children}
     </DataProviderContext.Provider>
   );
+};
+
+DataProviderContextProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+DataProviderContextProvider.defaultProps = {
+  children: null,
 };
 
 export { DataProviderContextProvider, useDataProviderContext };

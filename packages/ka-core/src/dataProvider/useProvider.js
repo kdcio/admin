@@ -22,7 +22,7 @@ const useProvider = ({ source, name, params, defaultData = [] }) => {
 
   useEffect(() => {
     let cancelRequest = false;
-    if (!source || !name) return;
+    if (!source || !name) return null;
 
     const fetchData = async () => {
       dispatch({ type: 'FETCHING' });

@@ -1,4 +1,5 @@
-export const logo = [
+/* eslint-disable max-len */
+const logo = [
   '162.86 25',
   `
   <title>KDC Admin logo</title>
@@ -22,3 +23,5 @@ export const logo = [
   </g>
 `,
 ];
+
+export default logo;

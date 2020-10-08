@@ -1,7 +1,7 @@
-import React from 'react';
-import { createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
+import React, { createContext, useContext } from 'react';
 import { useDataProviderContext, useProvider } from '../dataProvider';
-import { useRouteContext } from '../context/RouteContext';
+import { useRouteContext } from './RouteContext';
 
 const FormContext = createContext({});
 
@@ -26,6 +26,13 @@ const FormContextProvider = (props) => {
       {children}
     </FormContext.Provider>
   );
+};
+
+FormContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export { FormContextProvider, useFormContext };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
+import React, { createContext, useContext } from 'react';
 
 const RouteContext = createContext({});
 
@@ -13,6 +13,21 @@ const RouteContextProvider = (props) => {
       {children}
     </RouteContext.Provider>
   );
+};
+
+RouteContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.shape({
+    label: PropTypes.string,
+  }),
+};
+
+RouteContextProvider.defaultProps = {
+  options: { label: '' },
 };
 
 export { RouteContextProvider, useRouteContext };

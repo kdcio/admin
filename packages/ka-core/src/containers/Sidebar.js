@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   CCreateElement,
   CSidebar,
@@ -80,6 +81,23 @@ const Sidebar = ({ children }) => {
       <CSidebarMinimizer className="c-d-md-down-none" />
     </CSidebar>
   );
+};
+
+Sidebar.propTypes = {
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  group: PropTypes.string.isRequired,
+  options: PropTypes.shape({
+    label: PropTypes.string,
+  }),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
+Sidebar.defaultProps = {
+  options: { label: '' },
 };
 
 export default Sidebar;

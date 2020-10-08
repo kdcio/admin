@@ -1,13 +1,11 @@
-import { sygnet } from './sygnet';
-import { logo } from './logo';
 import * as AllIcons from '@coreui/icons';
+import sygnet from './sygnet';
+import logo from './logo';
 
-export const icons = Object.assign(
-  {},
-  {
-    sygnet,
-    logo,
-    // logoNegative,
-  },
-  { ...AllIcons }
-);
+const icons = {
+  sygnet,
+  logo,
+  ...AllIcons,
+};
+
+export default icons;
