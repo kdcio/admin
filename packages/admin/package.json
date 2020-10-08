@@ -27,6 +27,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "@coreui/coreui": "^3.3.0",
     "ka-core": "^0.1.0",
     "ka-ui": "^0.1.0",
