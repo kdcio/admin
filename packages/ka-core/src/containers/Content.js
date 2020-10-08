@@ -145,6 +145,7 @@ Content.propTypes = {
   dashboard: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
+    PropTypes.object,
   ]).isRequired,
 };
 

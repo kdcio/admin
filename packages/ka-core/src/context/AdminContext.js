@@ -43,7 +43,13 @@ const AdminContextProvider = ({
 
 AdminContextProvider.propTypes = {
   containsDashboard: PropTypes.bool.isRequired,
-  dataProvider: PropTypes.node.isRequired,
+  dataProvider: PropTypes.shape({
+    getList: PropTypes.func.isRequired,
+    getOne: PropTypes.func,
+    create: PropTypes.func,
+    update: PropTypes.func,
+    delete: PropTypes.func,
+  }).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
