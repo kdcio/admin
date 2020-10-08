@@ -9,8 +9,7 @@
     "scss"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w"
+    "clean": "rm -fr ./dist"
   },
   "author": {
     "name": "Ian Dela Cruz",
@@ -28,31 +27,17 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
-    "ka-core": "^1.0.0",
-    "ka-ui": "^1.0.0",
+    "@coreui/coreui": "^3.3.0",
+    "ka-core": "^0.1.0",
+    "ka-ui": "^0.1.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
   },
-  "peerDependencies": {
-    "@coreui/coreui": "^3.3.0"
-  },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^15.1.0",
-    "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@types/react-router-dom": "^5.1.5",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
-    "prettier": "^2.1.2",
-    "rollup": "^2.28.2",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-peer-deps-external": "^2.2.3",
-    "rollup-plugin-postcss": "^3.1.8",
-    "rollup-plugin-sass": "^1.2.2",
-    "rollup-plugin-visualizer": "^4.1.1"
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5"
   }
 }

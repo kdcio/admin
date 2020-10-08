@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "description": "Easy to use admin framework built using React and Bootstrap",
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm:watch:*\"  \"yarn demo\"",
+    "start": "concurrently --kill-others-on-fail \"npm:watch\"  \"yarn demo\"",
     "demo": "yarn workspace demo start",
-    "build": "yarn workspace @kdcsoftware/admin build",
-    "watch:admin": "yarn workspace @kdcsoftware/admin start",
-    "watch:core": "yarn workspace ka-core start",
-    "watch:ui": "yarn workspace ka-ui start"
+    "build": "lerna exec -- rollup -c=../../rollup.config.js",
+    "watch": "lerna exec --no-sort -- rollup -w -c=../../rollup.config.js",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "check-packages": "yarn clean && yarn test && yarn lint && yarn build"
   },
   "keywords": [
     "admin",
@@ -31,7 +33,20 @@
     "examples/*"
   ],
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
     "concurrently": "^5.3.0",
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.2",
+    "rollup": "^2.28.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-visualizer": "^4.1.1",
     "watch": "^1.0.2"
   }
 }
