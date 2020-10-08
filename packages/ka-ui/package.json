@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "clean": "rm -fr ./dist",
-    "lint": "../../node_modules/.bin/eslint ./src -c $(pwd)/eslint.config.js --report-unused-disable-directives"
+    "lint": "../../node_modules/.bin/eslint ./src -c $(pwd)/.eslintrc.js --report-unused-disable-directives"
   },
   "author": {
     "name": "Ian Dela Cruz",
