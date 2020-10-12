@@ -9,6 +9,8 @@
     "scss"
   ],
   "scripts": {
+    "build": "rollup -c=../../rollup.config.js",
+    "watch": "rollup -w -c=../../rollup.config.js",
     "clean": "rm -fr ./dist",
     "lint": "../../node_modules/.bin/eslint ./src -c $(pwd)/.eslintrc.js --report-unused-disable-directives"
   },
