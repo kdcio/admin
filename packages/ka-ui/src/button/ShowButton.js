@@ -1,18 +1,13 @@
 import React from 'react';
 import { CButton } from '@coreui/react';
-import { useRouteContext } from 'ka-core';
+import { useRouteContext, useData } from 'ka-core';
 
-const ShowButton = ({ record, ...rest }) => {
+const ShowButton = () => {
   const { history, basePath } = useRouteContext();
-  const onClick = () => history.push(`${basePath}/${record.id}/show`);
+  const { data } = useData();
+  const onClick = () => history.push(`${basePath}/${data.id}/show`);
   return (
-    <CButton
-      variant="outline"
-      color="primary"
-      size="sm"
-      onClick={onClick}
-      {...rest}
-    >
+    <CButton variant="outline" color="primary" size="sm" onClick={onClick}>
       Show
     </CButton>
   );

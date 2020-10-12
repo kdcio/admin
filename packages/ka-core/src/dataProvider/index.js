@@ -1,7 +1,21 @@
-import useProvider from './useProvider';
+import { ProviderContextProvider, useProviderContext } from './ProviderContext';
 import {
-  DataProviderContextProvider,
-  useDataProviderContext,
-} from './DataProviderContext';
+  DataContextProvider,
+  useDataContext,
+  FETCHING,
+  FETCHED,
+  FETCH_ERROR,
+} from './DataContext';
+import { DataProvider, useData } from './Data';
 
-export { useProvider, DataProviderContextProvider, useDataProviderContext };
+export {
+  ProviderContextProvider,
+  useProviderContext,
+  DataContextProvider,
+  useDataContext,
+  DataProvider,
+  useData,
+  FETCHING,
+  FETCHED,
+  FETCH_ERROR,
+};

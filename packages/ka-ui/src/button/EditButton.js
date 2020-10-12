@@ -1,26 +1,17 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { CButton } from '@coreui/react';
-import { useRouteContext } from 'ka-core';
+import { useRouteContext, useData } from 'ka-core';
 
-const EditButton = ({ record }) => {
+const EditButton = () => {
   const { history, basePath } = useRouteContext();
-  const onClick = () => history.push(`${basePath}/${record.id}`);
+  const { data } = useData();
+  const onClick = () => history.push(`${basePath}/${data.id}`);
+
   return (
     <CButton variant="outline" color="primary" size="sm" onClick={onClick}>
       Edit
     </CButton>
   );
-};
-
-EditButton.propTypes = {
-  record: PropTypes.shape({
-    id: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
-  }),
-};
-
-EditButton.defaultProps = {
-  record: { id: null },
 };
 
 export default EditButton;

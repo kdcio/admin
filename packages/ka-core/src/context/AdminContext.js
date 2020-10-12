@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter } from 'react-router-dom';
-import { DataProviderContextProvider } from '../dataProvider';
+import { ProviderContextProvider, DataContextProvider } from '../dataProvider';
 
 const AdminContext = createContext({});
 
@@ -28,15 +28,17 @@ const AdminContextProvider = ({
 
   return (
     <AdminContext.Provider value={{ getResourceOpts, ...options }}>
-      <DataProviderContextProvider
+      <ProviderContextProvider
         getList={getList}
         getOne={getOne}
         create={create}
         update={update}
         delete={del}
       >
-        <BrowserRouter>{children}</BrowserRouter>
-      </DataProviderContextProvider>
+        <DataContextProvider>
+          <BrowserRouter>{children}</BrowserRouter>
+        </DataContextProvider>
+      </ProviderContextProvider>
     </AdminContext.Provider>
   );
 };

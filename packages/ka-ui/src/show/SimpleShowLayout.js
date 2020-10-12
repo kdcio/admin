@@ -1,5 +1,12 @@
-import React, { Fragment, cloneElement } from 'react';
-import { useShowContext, useRouteContext } from 'ka-core';
+import React, { Fragment, cloneElement, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import {
+  useDataContext,
+  useData,
+  useRouteContext,
+  FETCHED,
+  FETCHING,
+} from 'ka-core';
 import { CCard, CCardHeader, CCardBody, CCol, CRow } from '@coreui/react';
 import { EditButton, ListButton } from '../button';
 
@@ -7,8 +14,23 @@ const SimpleShowLayout = (props) => {
   const {
     match: { params },
   } = useRouteContext();
-  const { record = {} } = useShowContext();
+  const { status, error, data } = useDataContext();
+  const { setData } = useData();
   const { children = [] } = props;
+
+  useEffect(() => {
+    if (status === FETCHED) {
+      setData(data);
+    }
+  }, [status, data]);
+
+  if (status === FETCHING) {
+    return <p>Fetching</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <CRow>
@@ -17,22 +39,20 @@ const SimpleShowLayout = (props) => {
           <CCardHeader>
             Show #{params.id}
             <div className="card-header-actions">
-              <EditButton record={record} className="mr-2" />
+              <EditButton className="mr-2" />
               <ListButton />
             </div>
           </CCardHeader>
           <CCardBody>
             <dl className="row">
-              {children.map((child, idx) => {
+              {children.map((child) => {
                 const {
-                  props: { label },
+                  props: { source, label },
                 } = child;
                 return (
-                  <Fragment key={idx}>
+                  <Fragment key={source}>
                     <dt className="col-sm-3">{label}</dt>
-                    <dd className="col-sm-9">
-                      {cloneElement(child, { record })}
-                    </dd>
+                    <dd className="col-sm-9">{cloneElement(child)}</dd>
                   </Fragment>
                 );
               })}
@@ -42,6 +62,13 @@ const SimpleShowLayout = (props) => {
       </CCol>
     </CRow>
   );
+};
+
+SimpleShowLayout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default SimpleShowLayout;

@@ -1,10 +1,22 @@
 import React from 'react';
-import { ShowContextProvider } from 'ka-core';
+import PropTypes from 'prop-types';
+import { ShowContextProvider, DataProvider } from 'ka-core';
 
 const Show = (props) => {
-  const { children, ...showProps } = props;
+  const { children } = props;
 
-  return <ShowContextProvider {...showProps}>{children}</ShowContextProvider>;
+  return (
+    <ShowContextProvider>
+      <DataProvider>{children}</DataProvider>
+    </ShowContextProvider>
+  );
+};
+
+Show.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default Show;

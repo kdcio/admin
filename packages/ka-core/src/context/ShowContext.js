@@ -1,6 +1,6 @@
+import React, { createContext, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import React, { createContext, useContext } from 'react';
-import { useDataProviderContext, useProvider } from '../dataProvider';
+import { useProviderContext } from '../dataProvider';
 import { useRouteContext } from './RouteContext';
 
 const ShowContext = createContext({});
@@ -12,19 +12,20 @@ const ShowContextProvider = (props) => {
     name,
     match: { params },
   } = useRouteContext();
-  const { getOne } = useDataProviderContext();
-  const { status, data, error } = useProvider({
-    name,
-    params,
-    source: getOne,
-    defaultData: {},
-  });
+  const { setProvider } = useProviderContext();
+
+  useEffect(() => {
+    setProvider({
+      name,
+      params,
+      type: 'one',
+      defaultData: {},
+    });
+  }, [name]);
 
   const { children } = props;
   return (
-    <ShowContext.Provider value={{ ...props, status, record: data, error }}>
-      {children}
-    </ShowContext.Provider>
+    <ShowContext.Provider value={{ ...props }}>{children}</ShowContext.Provider>
   );
 };
 

@@ -1,29 +1,32 @@
 import React, { cloneElement } from 'react';
-import { useListContext } from 'ka-core';
+import PropTypes from 'prop-types';
+import { useDataContext, DataProvider } from 'ka-core';
 import DatagridRow from './DatagridRow';
 
 const Datagrid = (props) => {
-  const { data = [] } = useListContext();
+  const { status, error, data = [] } = useDataContext();
   const { children = [] } = props;
   // const page = 1;
   // const pageChange = () => {};
+
+  if (status === 'fetching') {
+    return <p>Fetching</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <table className="table">
       <thead>
         <tr>
           {children.map((child, idx) => {
-            let {
-              props: { source, label },
-            } = child;
-            if (!source && !label) {
-              label = '';
-            } else if (!label) {
-              label = source;
-            }
-
+            const key = idx + 1;
+            const { props: childProps } = child;
+            const label = childProps.label || childProps.source || '';
             return (
-              <th key={idx} scope="col">
+              <th key={key} scope="col">
                 {label}
               </th>
             );
@@ -31,17 +34,19 @@ const Datagrid = (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((row, idx) =>
-          cloneElement(
-            <DatagridRow />,
-            {
-              key: idx,
-              record: row,
-              rowIndex: idx,
-            },
-            children
-          )
-        )}
+        {Array.isArray(data) &&
+          data.map((row, idx) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <DataProvider key={idx}>
+              {cloneElement(
+                <DatagridRow />,
+                {
+                  record: row,
+                },
+                children
+              )}
+            </DataProvider>
+          ))}
       </tbody>
       {/* <CPagination
         activePage={page}
@@ -52,6 +57,13 @@ const Datagrid = (props) => {
       /> */}
     </table>
   );
+};
+
+Datagrid.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default Datagrid;
